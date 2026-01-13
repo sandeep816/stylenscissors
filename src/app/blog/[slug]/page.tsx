@@ -10,9 +10,10 @@ import type {BlogPost} from '@/types/sanity'
 export default async function BlogPostPage({
   params,
 }: {
-  params: {slug: string}
+  params: Promise<{slug: string}>
 }) {
-  const post = await client.fetch(postBySlugQuery, {slug: params.slug})
+  const {slug} = await params
+  const post = await client.fetch(postBySlugQuery, {slug})
 
   if (!post) {
     notFound()
@@ -22,7 +23,7 @@ export default async function BlogPostPage({
   const categoryIds = post.categories?.map((cat: {_id: string}) => cat._id) || []
   const relatedPosts = categoryIds.length > 0
     ? await client.fetch(relatedPostsQuery, {
-        slug: params.slug,
+        slug,
         categoryIds,
       })
     : []

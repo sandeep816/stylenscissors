@@ -22,7 +22,7 @@ export default async function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[600px] flex items-center justify-center bg-gradient-to-r from-pink-50 to-purple-50">
+      <section className="relative h-[600px] flex items-center justify-center bg-linear-to-r from-pink-50 to-purple-50">
         {siteSettings?.heroImage && (
           <div className="absolute inset-0 z-0">
             <Image

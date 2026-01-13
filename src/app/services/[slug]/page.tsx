@@ -9,9 +9,10 @@ import {PortableText} from '@/lib/portableText'
 export default async function ServiceDetailPage({
   params,
 }: {
-  params: {slug: string}
+  params: Promise<{slug: string}>
 }) {
-  const service = await client.fetch(serviceBySlugQuery, {slug: params.slug})
+  const {slug} = await params
+  const service = await client.fetch(serviceBySlugQuery, {slug})
 
   if (!service) {
     notFound()
