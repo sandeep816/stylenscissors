@@ -1,5 +1,6 @@
 import {client} from '@/sanity/lib/client'
 import {servicesQuery, availableTeamMembersQuery} from '@/sanity/lib/queries'
+import type {Service, TeamMember} from '@/types/sanity'
 
 export default async function BookAppointmentPage() {
   const [services, teamMembers] = await Promise.all([
@@ -38,7 +39,7 @@ export default async function BookAppointmentPage() {
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"
               >
                 <option value="">Choose a service...</option>
-                {services.map((service) => (
+                {services.map((service: Service) => (
                   <option key={service._id} value={service._id}>
                     {service.name} - {service.price} ({service.duration} min)
                   </option>
@@ -61,7 +62,7 @@ export default async function BookAppointmentPage() {
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"
                 >
                   <option value="">No preference</option>
-                  {teamMembers.map((member) => (
+                  {teamMembers.map((member: TeamMember) => (
                     <option key={member._id} value={member._id}>
                       {member.name} - {member.role}
                     </option>

@@ -8,6 +8,7 @@ import {
   featuredGalleryQuery,
 } from '@/sanity/lib/queries'
 import {urlFor} from '@/sanity/lib/image'
+import type {Service, Testimonial, GalleryItem} from '@/types/sanity'
 
 export default async function Home() {
   const [siteSettings, featuredServices, featuredTestimonials, featuredGallery] =
@@ -66,7 +67,7 @@ export default async function Home() {
               Our Services
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {featuredServices.slice(0, 3).map((service) => (
+              {featuredServices.slice(0, 3).map((service: Service) => (
                 <Link
                   key={service._id}
                   href={`/services/${service.slug.current}`}
@@ -121,7 +122,7 @@ export default async function Home() {
               What Our Clients Say
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {featuredTestimonials.slice(0, 3).map((testimonial) => (
+              {featuredTestimonials.slice(0, 3).map((testimonial: Testimonial) => (
                 <div
                   key={testimonial._id}
                   className="bg-white p-6 rounded-lg shadow-md"
@@ -180,7 +181,7 @@ export default async function Home() {
               Our Work
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {featuredGallery.slice(0, 8).map((item) => (
+              {featuredGallery.slice(0, 8).map((item: GalleryItem) => (
                 <Link
                   key={item._id}
                   href="/gallery"

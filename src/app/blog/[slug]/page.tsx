@@ -5,6 +5,7 @@ import {client} from '@/sanity/lib/client'
 import {postBySlugQuery, relatedPostsQuery} from '@/sanity/lib/queries'
 import {urlFor} from '@/sanity/lib/image'
 import {PortableText} from '@/lib/portableText'
+import type {BlogPost} from '@/types/sanity'
 
 export default async function BlogPostPage({
   params,
@@ -18,7 +19,7 @@ export default async function BlogPostPage({
   }
 
   // Get related posts
-  const categoryIds = post.categories?.map((cat) => cat._id) || []
+  const categoryIds = post.categories?.map((cat: {_id: string}) => cat._id) || []
   const relatedPosts = categoryIds.length > 0
     ? await client.fetch(relatedPostsQuery, {
         slug: params.slug,
@@ -68,7 +69,7 @@ export default async function BlogPostPage({
             </div>
             {post.categories && post.categories.length > 0 && (
               <div className="flex flex-wrap gap-2 mt-4">
-                {post.categories.map((category) => (
+                {post.categories.map((category: {_id: string; title: string; slug: {current: string}}) => (
                   <span
                     key={category._id}
                     className="bg-pink-50 text-pink-700 px-3 py-1 rounded-full text-sm"
@@ -106,7 +107,7 @@ export default async function BlogPostPage({
                 Related Posts
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {relatedPosts.map((relatedPost) => (
+                {relatedPosts.map((relatedPost: BlogPost) => (
                   <Link
                     key={relatedPost._id}
                     href={`/blog/${relatedPost.slug.current}`}

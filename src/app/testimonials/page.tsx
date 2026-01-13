@@ -2,6 +2,7 @@ import Image from 'next/image'
 import {client} from '@/sanity/lib/client'
 import {testimonialsQuery} from '@/sanity/lib/queries'
 import {urlFor} from '@/sanity/lib/image'
+import type {Testimonial} from '@/types/sanity'
 
 export default async function TestimonialsPage() {
   const testimonials = await client.fetch(testimonialsQuery)
@@ -20,7 +21,7 @@ export default async function TestimonialsPage() {
         {/* Testimonials Grid */}
         {testimonials && testimonials.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {testimonials.map((testimonial) => (
+            {testimonials.map((testimonial: Testimonial) => (
               <div
                 key={testimonial._id}
                 className="bg-white p-6 rounded-lg shadow-md"

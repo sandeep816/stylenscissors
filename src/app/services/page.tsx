@@ -3,12 +3,13 @@ import Image from 'next/image'
 import {client} from '@/sanity/lib/client'
 import {servicesQuery} from '@/sanity/lib/queries'
 import {urlFor} from '@/sanity/lib/image'
+import type {Service} from '@/types/sanity'
 
 export default async function ServicesPage() {
   const services = await client.fetch(servicesQuery)
 
   // Group services by category
-  const servicesByCategory = services.reduce((acc: Record<string, unknown[]>, service) => {
+  const servicesByCategory = services.reduce((acc: Record<string, Service[]>, service: Service) => {
     const category = service.category || 'other'
     if (!acc[category]) {
       acc[category] = []
@@ -39,13 +40,15 @@ export default async function ServicesPage() {
         </div>
 
         {/* Services by Category */}
-        {Object.entries(servicesByCategory).map(([category, categoryServices]) => (
-          <div key={category} className="mb-16">
+        {Object.entries(servicesByCategory).map(([category, categoryServices]) => {
+          const services = categoryServices as Service[]
+          return (
+            <div key={category} className="mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-8">
               {categoryNames[category] || category}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {categoryServices.map((service) => (
+              {services.map((service: Service) => (
                 <Link
                   key={service._id}
                   href={`/services/${service.slug.current}`}
@@ -83,7 +86,8 @@ export default async function ServicesPage() {
               ))}
             </div>
           </div>
-        ))}
+          )
+        })}
 
         {/* CTA */}
         <div className="text-center mt-12">

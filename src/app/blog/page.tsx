@@ -3,6 +3,7 @@ import Image from 'next/image'
 import {client} from '@/sanity/lib/client'
 import {postsQuery} from '@/sanity/lib/queries'
 import {urlFor} from '@/sanity/lib/image'
+import type {BlogPost} from '@/types/sanity'
 
 export default async function BlogPage() {
   const posts = await client.fetch(postsQuery)
@@ -21,7 +22,7 @@ export default async function BlogPage() {
         {/* Blog Posts Grid */}
         {posts && posts.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {posts.map((post) => (
+            {posts.map((post: BlogPost) => (
               <Link
                 key={post._id}
                 href={`/blog/${post.slug.current}`}

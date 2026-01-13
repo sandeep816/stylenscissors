@@ -1,5 +1,6 @@
 import {client} from '@/sanity/lib/client'
 import {siteSettingsQuery} from '@/sanity/lib/queries'
+import type {SiteSettings} from '@/types/sanity'
 
 export default async function ContactPage() {
   const siteSettings = await client.fetch(siteSettingsQuery)
@@ -75,7 +76,7 @@ export default async function ContactPage() {
                     Business Hours
                   </h3>
                   <div className="space-y-1 text-gray-700">
-                    {siteSettings.businessHours.map((hours, idx: number) => (
+                    {siteSettings.businessHours.map((hours: {day: string; open?: string; close?: string; closed?: boolean}, idx: number) => (
                       <div key={idx} className="flex justify-between">
                         <span className="capitalize">{hours.day}:</span>
                         {hours.closed ? (
