@@ -92,19 +92,20 @@ export const appointmentType = defineType({
           })
         : 'No date set'
 
-      const statusEmoji = {
+      const statusEmoji: Record<string, string> = {
         pending: '⏳',
         confirmed: '✅',
         completed: '✓',
         cancelled: '❌',
-      }[status || 'pending'] || ''
+      }
+      const emoji = statusEmoji[status || 'pending'] || ''
 
       const serviceText = service ? ` • ${service}` : ''
       const teamText = teamMember ? ` with ${teamMember}` : ''
 
       return {
         title,
-        subtitle: `${statusEmoji} ${date}${serviceText}${teamText}`,
+        subtitle: `${emoji} ${date}${serviceText}${teamText}`,
       }
     },
   },

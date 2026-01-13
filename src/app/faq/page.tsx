@@ -1,11 +1,12 @@
 import {client} from '@/sanity/lib/client'
 import {faqsQuery} from '@/sanity/lib/queries'
 import {PortableText} from '@/lib/portableText'
+import type {FAQ} from '@/types/sanity'
 
 export default async function FAQPage() {
   const faqs = await client.fetch(faqsQuery)
 
-  const faqsByCategory = faqs.reduce((acc: Record<string, unknown[]>, faq) => {
+  const faqsByCategory = faqs.reduce((acc: Record<string, FAQ[]>, faq: FAQ) => {
     const category = faq.category || 'general'
     if (!acc[category]) {
       acc[category] = []
@@ -39,13 +40,15 @@ export default async function FAQPage() {
         {/* FAQ by Category */}
         {Object.keys(faqsByCategory).length > 0 ? (
           <div className="max-w-4xl mx-auto space-y-12">
-            {Object.entries(faqsByCategory).map(([category, categoryFaqs]) => (
-              <div key={category}>
-                <h2 className="text-2xl font-bold mb-6 text-gray-900">
-                  {categoryNames[category] || category}
-                </h2>
-                <div className="space-y-4">
-                  {categoryFaqs.map((faq) => (
+            {Object.entries(faqsByCategory).map(([category, categoryFaqs]) => {
+              const faqs = categoryFaqs as FAQ[]
+              return (
+                <div key={category}>
+                  <h2 className="text-2xl font-bold mb-6 text-gray-900">
+                    {categoryNames[category] || category}
+                  </h2>
+                  <div className="space-y-4">
+                    {faqs.map((faq: FAQ) => (
                     <div
                       key={faq._id}
                       className="bg-white p-6 rounded-lg shadow-md"
@@ -57,10 +60,11 @@ export default async function FAQPage() {
                         <PortableText value={faq.answer} />
                       </div>
                     </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         ) : (
           <div className="text-center py-12">

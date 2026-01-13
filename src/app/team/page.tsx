@@ -4,6 +4,7 @@ import {client} from '@/sanity/lib/client'
 import {teamMembersQuery} from '@/sanity/lib/queries'
 import {urlFor} from '@/sanity/lib/image'
 import {PortableText} from '@/lib/portableText'
+import type {TeamMember} from '@/types/sanity'
 
 export default async function TeamPage() {
   const teamMembers = await client.fetch(teamMembersQuery)
@@ -21,7 +22,7 @@ export default async function TeamPage() {
 
         {/* Team Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {teamMembers.map((member) => (
+          {teamMembers.map((member: TeamMember) => (
             <div
               key={member._id}
               className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow"

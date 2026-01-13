@@ -2,6 +2,7 @@ import Image from 'next/image'
 import {client} from '@/sanity/lib/client'
 import {galleryItemsQuery} from '@/sanity/lib/queries'
 import {urlFor} from '@/sanity/lib/image'
+import type {GalleryItem} from '@/types/sanity'
 
 export default async function GalleryPage() {
   const galleryItems = await client.fetch(galleryItemsQuery)
@@ -20,7 +21,7 @@ export default async function GalleryPage() {
         {/* Gallery Grid */}
         {galleryItems && galleryItems.length > 0 ? (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {galleryItems.map((item) => (
+            {galleryItems.map((item: GalleryItem) => (
               <div
                 key={item._id}
                 className="group relative aspect-square overflow-hidden rounded-lg cursor-pointer"
