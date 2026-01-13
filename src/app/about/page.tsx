@@ -1,6 +1,5 @@
 import {client} from '@/sanity/lib/client'
 import {siteSettingsQuery} from '@/sanity/lib/queries'
-import {PortableText} from '@/lib/portableText'
 import Image from 'next/image'
 import {urlFor} from '@/sanity/lib/image'
 

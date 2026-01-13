@@ -38,7 +38,7 @@ export default async function BookAppointmentPage() {
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"
               >
                 <option value="">Choose a service...</option>
-                {services.map((service: any) => (
+                {services.map((service) => (
                   <option key={service._id} value={service._id}>
                     {service.name} - {service.price} ({service.duration} min)
                   </option>
@@ -61,7 +61,7 @@ export default async function BookAppointmentPage() {
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"
                 >
                   <option value="">No preference</option>
-                  {teamMembers.map((member: any) => (
+                  {teamMembers.map((member) => (
                     <option key={member._id} value={member._id}>
                       {member.name} - {member.role}
                     </option>
@@ -183,7 +183,7 @@ export default async function BookAppointmentPage() {
             </button>
 
             <p className="text-sm text-gray-500 text-center">
-              We'll confirm your appointment via email or phone call.
+              We&apos;ll confirm your appointment via email or phone call.
             </p>
           </form>
         </div>

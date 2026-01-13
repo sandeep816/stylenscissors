@@ -5,7 +5,7 @@ import {PortableText} from '@/lib/portableText'
 export default async function FAQPage() {
   const faqs = await client.fetch(faqsQuery)
 
-  const faqsByCategory = faqs.reduce((acc: any, faq: any) => {
+  const faqsByCategory = faqs.reduce((acc: Record<string, unknown[]>, faq) => {
     const category = faq.category || 'general'
     if (!acc[category]) {
       acc[category] = []
@@ -39,13 +39,13 @@ export default async function FAQPage() {
         {/* FAQ by Category */}
         {Object.keys(faqsByCategory).length > 0 ? (
           <div className="max-w-4xl mx-auto space-y-12">
-            {Object.entries(faqsByCategory).map(([category, categoryFaqs]: [string, any]) => (
+            {Object.entries(faqsByCategory).map(([category, categoryFaqs]) => (
               <div key={category}>
                 <h2 className="text-2xl font-bold mb-6 text-gray-900">
                   {categoryNames[category] || category}
                 </h2>
                 <div className="space-y-4">
-                  {categoryFaqs.map((faq: any) => (
+                  {categoryFaqs.map((faq) => (
                     <div
                       key={faq._id}
                       className="bg-white p-6 rounded-lg shadow-md"

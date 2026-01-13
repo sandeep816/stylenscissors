@@ -20,7 +20,7 @@ export default async function TestimonialsPage() {
         {/* Testimonials Grid */}
         {testimonials && testimonials.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {testimonials.map((testimonial: any) => (
+            {testimonials.map((testimonial) => (
               <div
                 key={testimonial._id}
                 className="bg-white p-6 rounded-lg shadow-md"
@@ -30,7 +30,7 @@ export default async function TestimonialsPage() {
                     <span key={i} className="text-yellow-400 text-xl">⭐</span>
                   ))}
                 </div>
-                <p className="text-gray-700 mb-6 italic">"{testimonial.review}"</p>
+                    <p className="text-gray-700 mb-6 italic">&ldquo;{testimonial.review}&rdquo;</p>
                 <div className="flex items-center">
                   {testimonial.customerPhoto && (
                     <div className="relative w-12 h-12 rounded-full overflow-hidden mr-3">

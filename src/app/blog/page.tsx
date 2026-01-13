@@ -21,7 +21,7 @@ export default async function BlogPage() {
         {/* Blog Posts Grid */}
         {posts && posts.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {posts.map((post: any) => (
+            {posts.map((post) => (
               <Link
                 key={post._id}
                 href={`/blog/${post.slug.current}`}

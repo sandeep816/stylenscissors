@@ -1,11 +1,11 @@
-import {ScissorsIcon} from '@sanity/icons'
+import {TagIcon} from '@sanity/icons'
 import {defineField, defineType} from 'sanity'
 
 export const serviceType = defineType({
   name: 'service',
   title: 'Service',
   type: 'document',
-  icon: ScissorsIcon,
+  icon: TagIcon,
   fields: [
     defineField({
       name: 'name',

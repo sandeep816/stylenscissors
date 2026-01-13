@@ -20,7 +20,7 @@ export default async function GalleryPage() {
         {/* Gallery Grid */}
         {galleryItems && galleryItems.length > 0 ? (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {galleryItems.map((item: any) => (
+            {galleryItems.map((item) => (
               <div
                 key={item._id}
                 className="group relative aspect-square overflow-hidden rounded-lg cursor-pointer"

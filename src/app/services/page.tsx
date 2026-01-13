@@ -8,7 +8,7 @@ export default async function ServicesPage() {
   const services = await client.fetch(servicesQuery)
 
   // Group services by category
-  const servicesByCategory = services.reduce((acc: any, service: any) => {
+  const servicesByCategory = services.reduce((acc: Record<string, unknown[]>, service) => {
     const category = service.category || 'other'
     if (!acc[category]) {
       acc[category] = []
@@ -39,13 +39,13 @@ export default async function ServicesPage() {
         </div>
 
         {/* Services by Category */}
-        {Object.entries(servicesByCategory).map(([category, categoryServices]: [string, any]) => (
+        {Object.entries(servicesByCategory).map(([category, categoryServices]) => (
           <div key={category} className="mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-8">
               {categoryNames[category] || category}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {categoryServices.map((service: any) => (
+              {categoryServices.map((service) => (
                 <Link
                   key={service._id}
                   href={`/services/${service.slug.current}`}

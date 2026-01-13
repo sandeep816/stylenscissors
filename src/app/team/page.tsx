@@ -21,7 +21,7 @@ export default async function TeamPage() {
 
         {/* Team Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {teamMembers.map((member: any) => (
+          {teamMembers.map((member) => (
             <div
               key={member._id}
               className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow"

@@ -66,7 +66,7 @@ export default async function Home() {
               Our Services
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {featuredServices.slice(0, 3).map((service: any) => (
+              {featuredServices.slice(0, 3).map((service) => (
                 <Link
                   key={service._id}
                   href={`/services/${service.slug.current}`}
@@ -121,7 +121,7 @@ export default async function Home() {
               What Our Clients Say
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {featuredTestimonials.slice(0, 3).map((testimonial: any) => (
+              {featuredTestimonials.slice(0, 3).map((testimonial) => (
                 <div
                   key={testimonial._id}
                   className="bg-white p-6 rounded-lg shadow-md"
@@ -131,7 +131,7 @@ export default async function Home() {
                       <span key={i} className="text-yellow-400 text-xl">⭐</span>
                     ))}
                   </div>
-                  <p className="text-gray-700 mb-4 italic">"{testimonial.review}"</p>
+                  <p className="text-gray-700 mb-4 italic">&ldquo;{testimonial.review}&rdquo;</p>
                   <div className="flex items-center">
                     {testimonial.customerPhoto && (
                       <div className="relative w-12 h-12 rounded-full overflow-hidden mr-3">
@@ -180,7 +180,7 @@ export default async function Home() {
               Our Work
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {featuredGallery.slice(0, 8).map((item: any) => (
+              {featuredGallery.slice(0, 8).map((item) => (
                 <Link
                   key={item._id}
                   href="/gallery"

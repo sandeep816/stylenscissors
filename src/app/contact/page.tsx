@@ -11,7 +11,7 @@ export default async function ContactPage() {
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold text-gray-900 mb-4">Contact Us</h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Get in touch with us. We'd love to hear from you!
+            Get in touch with us. We&apos;d love to hear from you!
           </p>
         </div>
 
@@ -75,7 +75,7 @@ export default async function ContactPage() {
                     Business Hours
                   </h3>
                   <div className="space-y-1 text-gray-700">
-                    {siteSettings.businessHours.map((hours: any, idx: number) => (
+                    {siteSettings.businessHours.map((hours, idx: number) => (
                       <div key={idx} className="flex justify-between">
                         <span className="capitalize">{hours.day}:</span>
                         {hours.closed ? (
