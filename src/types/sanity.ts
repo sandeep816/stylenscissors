@@ -161,3 +161,35 @@ export interface SiteSettings {
   heroTitle?: string
   heroSubtitle?: string
 }
+
+export interface HomePage {
+  _id: string
+  _type: 'homePage'
+  heroSection?: {
+    title?: string
+    subtitle?: string
+    image?: {
+      asset: {_ref: string}
+      alt?: string
+    }
+  }
+  aboutPreview?: {
+    title?: string
+    description?: string
+  }
+  whyChooseSection?: {
+    label?: string
+    title?: string
+    subtitle?: string
+    statistics?: Array<{
+      number: string
+      label: string
+      icon: 'users' | 'clock' | 'award' | 'star'
+    }>
+    features?: Array<{
+      title: string
+      description: string
+      icon: 'shield' | 'sparkle' | 'heart' | 'diamond'
+    }>
+  }
+}

@@ -3,6 +3,9 @@ import {groq} from 'next-sanity'
 // Site Settings (singleton)
 export const siteSettingsQuery = groq`*[_type == "siteSettings"][0]`
 
+// Home Page (singleton)
+export const homePageQuery = groq`*[_type == "homePage"][0]`
+
 // Services
 export const servicesQuery = groq`*[_type == "service"] | order(order asc, name asc) {
   _id,

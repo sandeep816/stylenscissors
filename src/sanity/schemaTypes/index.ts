@@ -11,11 +11,15 @@ import {testimonialType} from './testimonialType'
 import {faqType} from './faqType'
 import {appointmentType} from './appointmentType'
 import {siteSettingsType} from './siteSettingsType'
+import {homePageType} from './homePageType'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     // Core content types
     blockContentType,
+    // Site Configuration
+    siteSettingsType,
+    homePageType,
     // Blog
     categoryType,
     postType,
@@ -27,6 +31,5 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     testimonialType,
     faqType,
     appointmentType,
-    siteSettingsType,
   ],
 }

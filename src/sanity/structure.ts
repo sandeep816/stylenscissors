@@ -5,13 +5,20 @@ export const structure: StructureResolver = (S) =>
   S.list()
     .title('Style & Scissors')
     .items([
-      // Site Settings (singleton)
+      // Site Configuration
       S.listItem()
         .title('Site Settings')
         .child(
           S.document()
             .schemaType('siteSettings')
             .documentId('siteSettings')
+        ),
+      S.listItem()
+        .title('Home Page')
+        .child(
+          S.document()
+            .schemaType('homePage')
+            .documentId('homePage')
         ),
       S.divider(),
       // Main Content
@@ -61,6 +68,7 @@ export const structure: StructureResolver = (S) =>
           item.getId() &&
           ![
             'siteSettings',
+            'homePage',
             'service',
             'teamMember',
             'gallery',
