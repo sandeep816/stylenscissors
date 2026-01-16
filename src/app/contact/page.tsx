@@ -7,7 +7,7 @@ export default async function ContactPage() {
   const siteSettings = await client.fetch(siteSettingsQuery)
 
   return (
-    <div className="min-h-screen py-16">
+    <div className="min-h-screen pb-16">
       {/* Header */}
       <PageHeader title="Contact Us" description={`Get in touch with us. We'd love to hear from you! We are here to help you with your hair care needs.`} />
       <section className='mt-14'>

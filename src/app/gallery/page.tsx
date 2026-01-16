@@ -7,7 +7,7 @@ export default async function GalleryPage() {
   const galleryItems = await client.fetch(galleryItemsQuery)
 
   return (
-    <div className="min-h-screen py-16 bg-gray-50">
+    <div className="min-h-screen pb-16">
       {/* Header */}
       <PageHeader label='' title="Gallery" description="Browse through our portfolio of stunning transformations" />
       <section className='mt-14'>

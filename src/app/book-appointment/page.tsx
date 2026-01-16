@@ -11,18 +11,17 @@ export default async function BookAppointmentPage() {
   ])
 
   return (
-    <div className="min-h-screen py-16 bg-gray-50">
+    <div className="min-h-screen pb-16">
       {/* Header */}
       <PageHeader title="Book an Appointment" description="Schedule your visit and let us help you look your best" />
-      <div className="container mx-auto px-4">
-        
-
-
-        {/* Booking Form */}
-        <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
-          <BookingForm services={services} teamMembers={teamMembers} />
+      <section className='mt-14'>
+        <div className="container mx-auto px-4">
+          {/* Booking Form */}
+          <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
+            <BookingForm services={services} teamMembers={teamMembers} />
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   )
 }
