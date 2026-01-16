@@ -1,4 +1,4 @@
-import {groq} from 'next-sanity'
+import { groq } from 'next-sanity'
 
 // Site Settings (singleton)
 export const siteSettingsQuery = groq`*[_type == "siteSettings"][0]`
@@ -92,7 +92,18 @@ export const availableTeamMembersQuery = groq`*[_type == "teamMember" && availab
 export const galleryItemsQuery = groq`*[_type == "gallery"] | order(order asc, title asc) {
   _id,
   title,
-  image,
+  image {
+    asset-> {
+      _id,
+      metadata {
+        dimensions {
+          width,
+          height,
+          aspectRatio
+        }
+      }
+    }
+  },
   beforeImage,
   afterImage,
   isBeforeAfter,
@@ -109,7 +120,18 @@ export const galleryItemsQuery = groq`*[_type == "gallery"] | order(order asc, t
 export const featuredGalleryQuery = groq`*[_type == "gallery" && featured == true] | order(order asc) {
   _id,
   title,
-  image,
+  image {
+    asset-> {
+      _id,
+      metadata {
+        dimensions {
+          width,
+          height,
+          aspectRatio
+        }
+      }
+    }
+  },
   beforeImage,
   afterImage,
   isBeforeAfter,

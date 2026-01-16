@@ -3,20 +3,19 @@ import {client} from '@/sanity/lib/client'
 import {testimonialsQuery} from '@/sanity/lib/queries'
 import {urlFor} from '@/sanity/lib/image'
 import type {Testimonial} from '@/types/sanity'
+import PageHeader from '@/components/PageHeader'
 
 export default async function TestimonialsPage() {
   const testimonials = await client.fetch(testimonialsQuery)
 
   return (
     <div className="min-h-screen py-16 bg-gray-50">
+      {/* Header */}
+      <PageHeader title="Testimonials" description="Don't just take our word for it. Here's what our valued clients have to say about their experience with us." />
+      <section className='mt-14'>
       <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-gray-900 mb-4">Testimonials</h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            See what our clients have to say about their experience
-          </p>
-        </div>
+        
+
 
         {/* Testimonials Grid */}
         {testimonials && testimonials.length > 0 ? (
@@ -71,6 +70,7 @@ export default async function TestimonialsPage() {
           </div>
         )}
       </div>
+      </section>
     </div>
   )
 }

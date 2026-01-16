@@ -2,6 +2,7 @@ import {client} from '@/sanity/lib/client'
 import {faqsQuery} from '@/sanity/lib/queries'
 import {PortableText} from '@/lib/portableText'
 import type {FAQ} from '@/types/sanity'
+import PageHeader from '@/components/PageHeader'
 
 export default async function FAQPage() {
   const faqs = await client.fetch(faqsQuery)
@@ -26,16 +27,12 @@ export default async function FAQPage() {
 
   return (
     <div className="min-h-screen py-16 bg-gray-50">
+      {/* Header */}
+      <PageHeader title="Frequently Asked Questions" description="Find answers to common questions about our services" />
+      <section className='mt-14'>
       <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-gray-900 mb-4">
-            Frequently Asked Questions
-          </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Find answers to common questions about our services
-          </p>
-        </div>
+        
+
 
         {/* FAQ by Category */}
         {Object.keys(faqsByCategory).length > 0 ? (
@@ -72,6 +69,7 @@ export default async function FAQPage() {
           </div>
         )}
       </div>
+      </section>
     </div>
   )
 }

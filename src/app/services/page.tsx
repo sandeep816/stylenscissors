@@ -4,6 +4,7 @@ import {client} from '@/sanity/lib/client'
 import {servicesQuery} from '@/sanity/lib/queries'
 import {urlFor} from '@/sanity/lib/image'
 import type {Service} from '@/types/sanity'
+import PageHeader from '@/components/PageHeader'
 
 export default async function ServicesPage() {
   const services = await client.fetch(servicesQuery)
@@ -30,14 +31,12 @@ export default async function ServicesPage() {
 
   return (
     <div className="min-h-screen py-16 bg-gray-50">
+       {/* Header */}
+       <PageHeader title="Our Services" description="Discover our range of professional hair services tailored to your needs" />
+       <section className='mt-14'>
       <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-gray-900 mb-4">Our Services</h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Discover our range of professional hair services tailored to your needs
-          </p>
-        </div>
+       
+
 
         {/* Services by Category */}
         {Object.entries(servicesByCategory).map(([category, categoryServices]) => {
@@ -99,6 +98,7 @@ export default async function ServicesPage() {
           </Link>
         </div>
       </div>
+      </section>
     </div>
   )
 }

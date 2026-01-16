@@ -6,6 +6,7 @@ import {postBySlugQuery, relatedPostsQuery} from '@/sanity/lib/queries'
 import {urlFor} from '@/sanity/lib/image'
 import {PortableText} from '@/lib/portableText'
 import type {BlogPost} from '@/types/sanity'
+import PageHeader from '@/components/PageHeader'
 
 export default async function BlogPostPage({
   params,
@@ -30,6 +31,8 @@ export default async function BlogPostPage({
 
   return (
     <div className="min-h-screen py-16">
+      <PageHeader title="Blog" description="" />
+      <section className='mt-14'>
       <div className="container mx-auto px-4">
         {/* Back Link */}
         <Link
@@ -146,6 +149,7 @@ export default async function BlogPostPage({
           )}
         </article>
       </div>
+      </section>
     </div>
   )
 }

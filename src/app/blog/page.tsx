@@ -4,20 +4,19 @@ import {client} from '@/sanity/lib/client'
 import {postsQuery} from '@/sanity/lib/queries'
 import {urlFor} from '@/sanity/lib/image'
 import type {BlogPost} from '@/types/sanity'
+import PageHeader from '@/components/PageHeader'
 
 export default async function BlogPage() {
   const posts = await client.fetch(postsQuery)
 
   return (
     <div className="min-h-screen py-16 bg-gray-50">
+       {/* Header */}
+       <PageHeader title="Blog" description="Latest tips, trends, and insights from our salon" />
+       <section className='mt-14'>
       <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-gray-900 mb-4">Blog</h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Latest tips, trends, and insights from our salon
-          </p>
-        </div>
+       
+    
 
         {/* Blog Posts Grid */}
         {posts && posts.length > 0 ? (
@@ -69,6 +68,7 @@ export default async function BlogPage() {
           </div>
         )}
       </div>
+      </section>
     </div>
   )
 }

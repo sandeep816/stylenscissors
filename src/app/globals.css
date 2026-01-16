@@ -10,6 +10,10 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-playfair-display);
+  
+  /* Configure font family for headings in Tailwind */
+  --font-family-heading: var(--font-playfair-display);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +26,15 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:  var(--font-sans);
+}
+
+/* Apply Playfair Display to all headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair-display), 'Playfair Display', serif !important;
+}
+
+/* Utility class for manual application */
+.font-heading {
+  font-family: var(--font-playfair-display), 'Playfair Display', serif !important;
 }
