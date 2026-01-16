@@ -1,5 +1,5 @@
-import {DocumentIcon} from '@sanity/icons'
-import {defineArrayMember, defineField, defineType} from 'sanity'
+import { DocumentIcon } from '@sanity/icons'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 
 export const homePageType = defineType({
   name: 'homePage',
@@ -58,6 +58,45 @@ export const homePageType = defineType({
           type: 'text',
           validation: (Rule) => Rule.required(),
         }),
+        defineField({
+          name: 'images',
+          title: 'Images',
+          type: 'array',
+          description: 'Add exactly 4 images for the grid layout',
+          of: [
+            defineArrayMember({
+              type: 'image',
+              options: { hotspot: true },
+              fields: [
+                defineField({
+                  name: 'alt',
+                  type: 'string',
+                  title: 'Alternative Text',
+                }),
+              ],
+            }),
+          ],
+          validation: (Rule) => Rule.max(4),
+        }),
+        defineField({
+          name: 'badge',
+          title: 'Floating Badge',
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'value',
+              title: 'Value',
+              type: 'string',
+              initialValue: '4.9',
+            }),
+            defineField({
+              name: 'label',
+              title: 'Label',
+              type: 'string',
+              initialValue: 'Client Rating',
+            }),
+          ],
+        }),
       ],
     }),
     defineField({
@@ -111,10 +150,10 @@ export const homePageType = defineType({
                   type: 'string',
                   options: {
                     list: [
-                      {title: 'Users/People', value: 'users'},
-                      {title: 'Clock', value: 'clock'},
-                      {title: 'Award/Shield', value: 'award'},
-                      {title: 'Star', value: 'star'},
+                      { title: 'Users/People', value: 'users' },
+                      { title: 'Clock', value: 'clock' },
+                      { title: 'Award/Shield', value: 'award' },
+                      { title: 'Star', value: 'star' },
                     ],
                   },
                   validation: (Rule) => Rule.required(),
@@ -150,10 +189,10 @@ export const homePageType = defineType({
                   type: 'string',
                   options: {
                     list: [
-                      {title: 'Shield', value: 'shield'},
-                      {title: 'Sparkle/Star', value: 'sparkle'},
-                      {title: 'Heart', value: 'heart'},
-                      {title: 'Diamond', value: 'diamond'},
+                      { title: 'Shield', value: 'shield' },
+                      { title: 'Sparkle/Star', value: 'sparkle' },
+                      { title: 'Heart', value: 'heart' },
+                      { title: 'Diamond', value: 'diamond' },
                     ],
                   },
                   validation: (Rule) => Rule.required(),
@@ -170,7 +209,7 @@ export const homePageType = defineType({
     select: {
       title: 'heroSection.title',
     },
-    prepare({title}) {
+    prepare({ title }) {
       return {
         title: title || 'Home Page',
         subtitle: 'Home page content configuration',

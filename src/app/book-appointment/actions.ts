@@ -12,7 +12,6 @@ const writeClient = createClient({
   token: process.env.SANITY_API_TOKEN,
 })
 
-console.log('Sanity Write Client Configured - Token exists:', !!process.env.SANITY_API_TOKEN)
 
 const appointmentSchema = z.object({
   service: z.string().min(1, 'Please select a service'),

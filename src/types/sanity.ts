@@ -185,6 +185,14 @@ export interface HomePage {
   aboutPreview?: {
     title?: string
     description?: string
+    images?: Array<{
+      asset: { _ref: string }
+      alt?: string
+    }>
+    badge?: {
+      value?: string
+      label?: string
+    }
   }
   whyChooseSection?: {
     label?: string
